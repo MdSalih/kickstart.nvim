@@ -103,6 +103,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+--- enable exrc for tree-sitter-q development
+-- Get the current working directory
+local cwd = vim.loop.cwd()
+
+-- Check if the directory ends with 'tree-sitter-q'
+if cwd:match 'tree%-sitter%-q$' then
+  vim.o.exrc = true -- Enable exrc
+  vim.o.secure = true -- Ensure secure mode is active
+end
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
